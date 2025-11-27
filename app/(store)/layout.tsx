@@ -1,4 +1,5 @@
-import Header from "@/components/ui/Header";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 
@@ -18,6 +19,7 @@ export default function StoreLayout({
       <main>
         {children}
       </main>
+      <Footer/>
     </ClerkProvider> 
   );
 }

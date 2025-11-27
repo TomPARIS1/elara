@@ -4,7 +4,7 @@ import { ClerkLoaded, SignInButton, UserButton, useUser } from '@clerk/nextjs'
 import { Menu, Search, ShoppingBasket, ShoppingCart, X } from 'lucide-react';
 import Link from 'next/link';
 import React, { useState } from 'react'
-import { Button } from './button';
+import { Button } from './ui/button';
 import Form from "next/form"
 
 function Header() {
@@ -16,14 +16,14 @@ function Header() {
 
             <div className='flex md:grid md:grid-cols-3 items-center justify-between px-6 py-4 md:px-12'>
                 
-                <div className='font-bold text-xl tracking-tighter flex items-center'>
+                <div className='font-semibold text-xl tracking-tighter flex items-center'>
                     <Link href="/">ELARA</Link>
                 </div>
 
                 <nav className='hidden md:flex gap-8 font-medium text-sm uppercase tracking-wide justify-self-center text-gray-600'>
-                    <Link href="/shop" className="hover:text-black transition-colors">Shop</Link>
-                    <Link href="/studio" className="hover:text-black transition-colors">Studio</Link>
-                    <Link href="/journal" className="hover:text-black transition-colors">Journal</Link>
+                    <Link href="/shop" className="hover:text-accent transition-colors">Shop</Link>
+                    <Link href="#categories" className="hover:text-accent transition-colors">Categories</Link>
+                    <Link href="#featured" className="hover:text-accent transition-colors">Best Sellers</Link>
                 </nav>
 
 
@@ -34,9 +34,9 @@ function Header() {
                             type="text"
                             name="query"
                             placeholder="Search..."
-                            className="w-32 focus:w-64 transition-all duration-300 pl-9 pr-4 py-2 bg-gray-100/50 rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-black/10"
+                            className="w-32 focus:w-64 transition-all duration-300 pl-9 pr-4 py-2 bg-gray-100/50 rounded-full text-sm focus:outline-none focus:ring-1 focus:ring-accent/10"
                         />
-                        <Search className='w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-black transition-colors pointer-events-none' />
+                        <Search className='w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-accent transition-colors pointer-events-none' />
                     </Form>
 
                     <Button variant='ghost' size='icon' className='rounded-full hover:bg-gray-100 cursor-pointer'>
@@ -48,7 +48,7 @@ function Header() {
                             <UserButton/>
                         ) : (
                             <SignInButton mode="modal">
-                                <button className='bg-black text-white text-sm py-2 px-5 rounded-full font-medium hover:bg-gray-800 transition-all'>
+                                <button className='bg-accent text-white text-sm py-2 px-5 rounded-full font-medium hover:bg-accent/80 transition-all cursor-pointer'>
                                     Sign In
                                 </button>
                             </SignInButton>
@@ -92,11 +92,11 @@ function Header() {
                             Shop
                             <span className="text-gray-300 group-hover:text-black transition-colors">→</span>
                         </Link>
-                        <Link href="/studio" onClick={() => setIsOpen(false)} className="text-gray-600 hover:text-black transition-colors">
-                            Studio
+                        <Link href="#categories" onClick={() => setIsOpen(false)} className="text-gray-600 hover:text-black transition-colors">
+                            Categories
                         </Link>
-                        <Link href="/journal" onClick={() => setIsOpen(false)} className="text-gray-600 hover:text-black transition-colors">
-                            Journal
+                        <Link href="#featured" onClick={() => setIsOpen(false)} className="text-gray-600 hover:text-black transition-colors">
+                            Best Sellers
                         </Link>
                     </nav>
                     

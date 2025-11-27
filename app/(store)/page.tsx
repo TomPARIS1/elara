@@ -1,10 +1,26 @@
-import Hero from "@/components/ui/Hero";
+import CategoryGrid from "@/components/CategoryGrid";
+import Hero from "@/components/Hero";
+import NewsletterBanner from "@/components/NewsletterBanner";
+import ProductGrid from "@/components/ProductGrid";
+import ProductsView from "@/components/ProductsView";
+import TrustBar from "@/components/TrustBar";
+import { getAllCategories } from "@/sanity/lib/products/getAllCategories";
+import { getAllProducts } from "@/sanity/lib/products/getAllProducts";
+import { getTopRatedProducts } from "@/sanity/lib/products/getTopRatedProducts";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const products = await getAllProducts();
+  const categories = await getAllCategories();
+  const topRatedProducts = await getTopRatedProducts();
+
   return (
     <div>
       <Hero />
+      <TrustBar />
+      <CategoryGrid categories={categories}/>
+      <ProductGrid products={topRatedProducts}/>
+      <NewsletterBanner />
     </div>
   );
 }

@@ -20,6 +20,15 @@ export const categoryType = defineType({
             name: 'description',
             type: 'text',
         }),
+        defineField({
+            name: "image",
+            title: "Product Image",
+            type: "image",
+            options: {
+                hotspot: true,
+            },
+            validation: (Rule) => Rule.required(),
+        }),
     ],
     preview: {
         select: {
