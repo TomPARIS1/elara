@@ -6,10 +6,14 @@ import Link from 'next/link';
 import React, { useState } from 'react'
 import { Button } from './ui/button';
 import Form from "next/form"
+import useBasketStore from '@/app/(store)/store';
 
 function Header() {
     const [isOpen, setIsOpen] = useState(false);
     const { user } = useUser();
+    const itemCount = useBasketStore((state) =>
+        state.items.reduce((total, item) => total + item.quantity, 0)
+    );
 
     return (
         <header className="w-full border-b border-gray-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
@@ -39,9 +43,12 @@ function Header() {
                         <Search className='w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-accent transition-colors pointer-events-none' />
                     </Form>
 
-                    <Button variant='ghost' size='icon' className='rounded-full hover:bg-gray-100 cursor-pointer'>
-                        <ShoppingCart className='w-5 h-5' />
-                    </Button>
+                    <Link href="/basket" className='flex-1 relative flex justify-center items-center space-x-2'>
+                        <Button variant='ghost' size='icon' className='rounded-full hover:bg-gray-100 cursor-pointer'>
+                            <ShoppingCart className='w-5 h-5' />
+                        </Button>
+                        <span className='absolute -top-2 -right-2 bg-red-400 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs'>{itemCount}</span>
+                    </Link>
 
                     <ClerkLoaded>
                         {user ? (

@@ -6,10 +6,12 @@ import Link from 'next/link'
 import React from 'react'
 
 function ProductCard({ product }: { product: Product }) {
+  const outOfStock = product.stock != 0 ? false : true;
+
   return (
     <Link href={`/product/${product.slug?.current}`}>
     <div
-      className="group bg-card border border-border overflow-hidden hover:border-accent hover:shadow-md transition-all duration-300"
+      className="group bg-card border border-border overflow-hidden hover:border-accent hover:shadow-md transition-all duration-300 "
     >
       <div className="relative h-72 overflow-hidden bg-muted">
         
@@ -26,7 +28,7 @@ function ProductCard({ product }: { product: Product }) {
       </div>
 
       <div className="p-5">
-        <h3 className="font-light text-foreground line-clamp-2 mb-3 text-sm leading-snug">{product.name}</h3>
+        <h3 className="font-light text-foreground line-clamp-2 mb-3 text-sm leading-snug min-h-10">{product.name}</h3>
 
         <div className="flex items-center gap-2 mb-4">
           <div className="flex items-center gap-0.5">
@@ -41,7 +43,11 @@ function ProductCard({ product }: { product: Product }) {
         </div>
 
         <div className="flex items-end justify-between">
-          <span className="text-base font-light text-foreground">${product.price?.toFixed(2)}</span>
+          {outOfStock ? (
+            <span className="text-base text-red-500">Out of stock</span>
+          ) : (
+            <span className="text-base font-light text-foreground">${product.price?.toFixed(2)}</span>
+          )}
         </div>
       </div>
     </div>

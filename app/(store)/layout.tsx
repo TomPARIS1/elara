@@ -1,5 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import { SanityLive } from "@/sanity/lib/live";
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 
@@ -19,6 +20,8 @@ export default function StoreLayout({
       <main>
         {children}
       </main>
+
+      <SanityLive />
       <Footer/>
     </ClerkProvider> 
   );

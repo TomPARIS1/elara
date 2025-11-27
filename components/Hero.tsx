@@ -6,7 +6,7 @@ function Hero() {
     <section className="relative bg-background text-foreground py-20 md:py-32 lg:py-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
-          {/* Content */}
+
           <div className="flex flex-col gap-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-balance leading-tight">
               Essential Goods. Effortlessly Curated.
@@ -20,7 +20,6 @@ function Hero() {
             </button>
           </div>
 
-          {/* Hero Image */}
           <div className="relative h-64 md:h-96 bg-muted overflow-hidden">
             <img
               src="/hero-banner.png"
