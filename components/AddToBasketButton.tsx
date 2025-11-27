@@ -1,6 +1,6 @@
 "use client"
 
-import useBasketStore from '@/app/(store)/store';
+import useBasketStore from '@/store/store';
 import { Product } from '@/sanity.types'
 import React, { useEffect, useState } from 'react'
 

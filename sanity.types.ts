@@ -369,7 +369,7 @@ export type PRODUCT_BY_ID_QUERYResult = {
 
 // Source: ./sanity/lib/products/getProductsByCategory.ts
 // Variable: PRODUCTS_BY_CATEGORY_QUERY
-// Query: *[            _type == "product"             && $categoryId in categories[]->_id  // Filtre de catégorie            && _id != $excludeId                  // 👈 CONDITION D'EXCLUSION        ] | order(name asc)[0...3]
+// Query: *[            _type == "product"             && $categoryId in categories[]->_id              && _id != $excludeId                          ] | order(name asc)[0...3]
 export type PRODUCTS_BY_CATEGORY_QUERYResult = Array<{
   _id: string;
   _type: "product";
@@ -487,7 +487,7 @@ declare module "@sanity/client" {
     "\n            *[\n                _type == \"category\"\n            ] | order(name asc)\n        ": ALL_CATEGORIES_QUERYResult;
     "\n            *[\n                _type == \"product\"\n            ] | order(name asc)\n        ": ALL_PRODUCTS_QUERYResult;
     "\n        *[\n            _type == \"product\" && slug.current == $slug\n        ] | order(name asc)[0]\n        ": PRODUCT_BY_ID_QUERYResult;
-    "\n        *[\n            _type == \"product\" \n            && $categoryId in categories[]->_id  // Filtre de cat\xE9gorie\n            && _id != $excludeId                  // \uD83D\uDC48 CONDITION D'EXCLUSION\n        ] | order(name asc)[0...3]\n      ": PRODUCTS_BY_CATEGORY_QUERYResult;
+    "\n        *[\n            _type == \"product\" \n            && $categoryId in categories[]->_id  \n            && _id != $excludeId                  \n        ] | order(name asc)[0...3]\n      ": PRODUCTS_BY_CATEGORY_QUERYResult;
     "\n        *[\n          _type == \"product\"\n        ] | order(rating.rate desc) [0...8]\n      ": TOP_RATED_PRODUCTS_QUERYResult;
     "\n        *[\n            _type == \"product\"\n            && name match $searchParam\n        ] | order(name asc)\n        ": PRODUCT_SEARCH_QUERYResult;
     "\n        *[\n            _type == \"sale\"\n            && isActive == true\n            && coupondCode == $couponCode\n        ] | order(validFrom desc)[0]\n        ": ACTIVE_SALE_BY_COUPON_QUERYResult;

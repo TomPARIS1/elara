@@ -6,7 +6,7 @@ import Link from 'next/link';
 import React, { useState } from 'react'
 import { Button } from './ui/button';
 import Form from "next/form"
-import useBasketStore from '@/app/(store)/store';
+import useBasketStore from '@/store/store';
 
 function Header() {
     const [isOpen, setIsOpen] = useState(false);

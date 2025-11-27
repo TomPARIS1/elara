@@ -1,12 +1,14 @@
 "use client"
 
 import React, { useEffect, useState } from 'react'
-import useBasketStore from '../store';
-import { useAuth, useUser } from '@clerk/nextjs';
+import useBasketStore from '../../../store/store';
+import { SignInButton, useAuth, useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import AddToBasketButton from '@/components/AddToBasketButton';
 import Image from 'next/image';
 import { imageUrl } from '@/lib/imageUrl';
+import { Loader2 } from 'lucide-react';
+import { createCheckoutSession, Metadata } from '@/app/actions/createCheckoutSession';
 
 function BasketPage() {
     const groupedItems = useBasketStore((state) => state.getGroupedItems());
@@ -22,10 +24,34 @@ function BasketPage() {
     }, []);
 
     if (!isClient) {
-        return null;
+        return <Loader2 className='animate-spin' />;
     }
 
     if (groupedItems.length === 0) {
+    }
+
+    const handleCheckout = async () => {
+      if (!isSignedIn) return;
+      setIsLoading(true);
+
+      try {
+        const metadata: Metadata = {
+          orderNumber: crypto.randomUUID(),
+          customerName: user?.fullName ?? "Unknown",
+          customerEmail: user?.emailAddresses[0].emailAddress ?? "Unknown",
+          clerkUserId: user!.id,
+        };
+
+        const checkoutUrl = await createCheckoutSession(groupedItems, metadata);
+
+        if (checkoutUrl) {
+          window.location.href = checkoutUrl;
+        }
+      } catch (error) {
+        console.error("Error creating checkout session:", error);
+      } finally {
+        setIsLoading(false);
+      }
     }
     
     
@@ -105,9 +131,17 @@ function BasketPage() {
                 <span>${groupedItems.reduce((total, item) => total + (item.product.price ?? 0) * item.quantity, 0).toFixed(2)}</span>
               </div>
   
-              <button className="w-full bg-accent text-accent-foreground py-3 font-medium text-sm tracking-wide rounded-md hover:shadow-md transition-shadow duration-300">
-                Checkout
-              </button>
+              {isSignedIn ? (
+                <button onClick={handleCheckout} disabled={isLoading} className="w-full bg-accent text-accent-foreground py-3 font-medium text-sm tracking-wide rounded-md hover:shadow-md transition-shadow duration-300 cursor-pointer">
+                  {isLoading ? <Loader2 className='animate-spin' /> : "Checkout"}
+                </button>
+              ) : (
+                <SignInButton mode="modal">
+                  <button onClick={handleCheckout} disabled={isLoading} className="w-full bg-accent text-accent-foreground py-3 font-medium text-sm tracking-wide rounded-md hover:shadow-md transition-shadow duration-300 cursor-pointer">
+                    Sign in to Checkout
+                  </button>
+                </SignInButton>
+              )}
             </div>
           </div>
         </div>

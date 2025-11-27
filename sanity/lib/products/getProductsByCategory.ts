@@ -3,12 +3,12 @@ import { sanityFetch } from "../live";
 
 export const getProductsByCategory = async (categoryId: string, excludeId: string) => { 
 
-    // Mettre à jour la requête pour accepter '$excludeId'
+
     const PRODUCTS_BY_CATEGORY_QUERY = defineQuery(`
         *[
             _type == "product" 
-            && $categoryId in categories[]->_id  // Filtre de catégorie
-            && _id != $excludeId                  // 👈 CONDITION D'EXCLUSION
+            && $categoryId in categories[]->_id  
+            && _id != $excludeId                  
         ] | order(name asc)[0...3]
       `);
       
@@ -17,7 +17,7 @@ export const getProductsByCategory = async (categoryId: string, excludeId: strin
             query: PRODUCTS_BY_CATEGORY_QUERY,
             params: {
                 categoryId,
-                excludeId, // 👈 Passer la variable au moteur GROQ
+                excludeId, 
             },
         });
 
