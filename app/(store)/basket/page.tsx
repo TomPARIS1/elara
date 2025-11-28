@@ -1,14 +1,14 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import useBasketStore from '../../../store/store';
 import { SignInButton, useAuth, useUser } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
-import QuantitySelector from '@/components/QuantitySelector';
+import QuantitySelector from '@/components/Products/QuantitySelector';
 import Image from 'next/image';
 import { imageUrl } from '@/lib/imageUrl';
 import { Loader2 } from 'lucide-react';
-import { createCheckoutSession, Metadata } from '@/app/actions/createCheckoutSession';
+import { createCheckoutSession } from '@/app/actions/createCheckoutSession';
 
 const CheckIcon = () => <span className="text-accent mr-2">✓</span>;
 

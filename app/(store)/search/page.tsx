@@ -1,5 +1,4 @@
-import ProductCard from "@/components/ProductCard";
-import ProductGrid from "@/components/ProductGrid";
+import ProductCard from "@/components/Products/ProductCard";
 import { searchProductsByName } from "@/sanity/lib/products/searchProductsByName";
 
 async function searchPage({

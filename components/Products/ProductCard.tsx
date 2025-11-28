@@ -1,9 +1,10 @@
+"use client"
+
 import { imageUrl } from '@/lib/imageUrl'
 import { Product } from '@/sanity.types'
 import { Star } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
 
 function ProductCard({ product }: { product: Product }) {
   const outOfStock = product.stock != 0 ? false : true;
@@ -44,7 +45,7 @@ function ProductCard({ product }: { product: Product }) {
 
         <div className="flex items-end justify-between">
           {outOfStock ? (
-            <span className="text-base text-red-500">Out of stock</span>
+            <span className="text-base text-red-600">Out of stock</span>
           ) : (
             <span className="text-base font-light text-foreground">${product.price?.toFixed(2)}</span>
           )}

@@ -76,16 +76,16 @@ export default function Footer() {
           <div className="col-span-1">
             <h4 className="font-medium text-sm uppercase tracking-wide mb-4">Follow Us</h4>
             <div className="flex gap-4">
-              <button className="p-2 text-primary-foreground/70 hover:text-accent transition-colors duration-200">
+              <button className="p-2 text-primary-foreground/70 hover:text-accent transition-colors duration-200" aria-label="Link to Elara's Facebook page">
                 <Facebook className="w-4 h-4" />
               </button>
-              <button className="p-2 text-primary-foreground/70 hover:text-accent transition-colors duration-200">
+              <button className="p-2 text-primary-foreground/70 hover:text-accent transition-colors duration-200" aria-label="Link to Elara's Instagram page">
                 <Instagram className="w-4 h-4" />
               </button>
-              <button className="p-2 text-primary-foreground/70 hover:text-accent transition-colors duration-200">
+              <button className="p-2 text-primary-foreground/70 hover:text-accent transition-colors duration-200" aria-label="Link to Elara's X page">
                 <Twitter className="w-4 h-4" />
               </button>
-              <button className="p-2 text-primary-foreground/70 hover:text-accent transition-colors duration-200">
+              <button className="p-2 text-primary-foreground/70 hover:text-accent transition-colors duration-200" aria-label="Copy Elara's mail">
                 <Mail className="w-4 h-4" />
               </button>
             </div>

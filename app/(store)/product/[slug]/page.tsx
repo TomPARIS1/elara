@@ -1,19 +1,16 @@
 import { imageUrl } from '@/lib/imageUrl';
 import { getProductBySlug } from '@/sanity/lib/products/getProductBySlug';
-import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import React from 'react'
 import { PortableText } from 'next-sanity';
-import { Button } from '@/components/ui/button';
-import QuantitySelector from '@/components/QuantitySelector';
 import { getProductsByCategory } from '@/sanity/lib/products/getProductsByCategory';
-import ProductGrid from '@/components/ProductGrid';
-import ProductCard from '@/components/ProductCard';
-import { Star, StarIcon } from 'lucide-react';
-import useBasketStore from '@/store/store';
-import AddToBasketButton from '@/components/AddToBasketButton';
+import ProductCard from '@/components/Products/ProductCard';
+import { Star } from 'lucide-react';
+import AddToBasketButton from '@/components/Basket/AddToBasketButton';
 
 const CheckIcon = () => <span className="text-accent mr-2">✓</span>;
+
+export const dynamic = "force-static";
+export const revalidate = 604800;
 
 async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

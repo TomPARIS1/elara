@@ -1,8 +1,8 @@
 
-import ProductCard from '@/components/ProductCard';
+import FilterSidebar from '@/components/Filter/FilterSidebar';
+import MobileFilterButton from '@/components/Filter/MobileFilterButton';
+import ProductCard from '@/components/Products/ProductCard';
 import { getAllProducts } from '@/sanity/lib/products/getAllProducts';
-import { ChevronDown } from 'lucide-react'
-import React from 'react'
 
 async function ShopPage() {
     const products = await getAllProducts();
@@ -17,9 +17,16 @@ async function ShopPage() {
           <p className="text-muted-foreground font-light">{products.length} products</p>
         </div>
 
+        <div className="flex justify-between items-center mb-6 lg:hidden">
+            <p className="text-muted-foreground font-light">{products.length} products found</p>
+            {/*<MobileFilterButton>
+                <FilterSidebar /> 
+            </MobileFilterButton>*/}
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           <aside className="hidden lg:block">
-            
+            {/*<FilterSidebar />*/}
           </aside>
 
           <div className="lg:col-span-4">

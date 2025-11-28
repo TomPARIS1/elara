@@ -4,7 +4,6 @@ import { imageUrl } from '@/lib/imageUrl';
 import { getMyOrders } from '@/sanity/lib/orders/getMyOrders';
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation';
-import React from 'react'
 import Image from 'next/image';
 import { Calendar, CheckCircle, Clock, DollarSign, Package, Tag, XCircle } from 'lucide-react';
 

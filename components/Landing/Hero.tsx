@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from './ui/button'
+import { Button } from '../ui/button'
 
 function Hero() {
   return (
@@ -22,7 +22,7 @@ function Hero() {
 
           <div className="relative h-64 md:h-96 bg-muted overflow-hidden">
             <img
-              src="/hero-banner.png"
+              src="/hero-banner.webp"
               alt="Curated product collection"
               className="w-full h-full object-cover"
             />
