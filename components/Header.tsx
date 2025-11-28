@@ -44,10 +44,12 @@ function Header() {
                     </Form>
 
                     <Link href="/basket" className='flex-1 relative flex justify-center items-center space-x-2'>
-                        <Button variant='ghost' size='icon' className='rounded-full hover:bg-gray-100 cursor-pointer'>
-                            <ShoppingCart className='w-5 h-5' />
-                        </Button>
-                        <span className='absolute -top-2 -right-2 bg-red-400 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs'>{itemCount}</span>
+                        <button className="p-2 text-foreground hover:text-accent transition-colors duration-200 relative">
+                            <ShoppingCart className="w-5 h-5" />
+                            <span className="absolute top-1 right-1 bg-accent text-accent-foreground text-xs rounded-full w-4 h-4 flex items-center justify-center font-medium">
+                                {itemCount}
+                            </span>
+                        </button>
                     </Link>
 
                     <ClerkLoaded>
@@ -64,9 +66,14 @@ function Header() {
                 </div>
 
                 <div className='flex items-center gap-3'>
-                <Button variant='ghost' size='icon' className='rounded-full md:hidden hover:bg-gray-100'>
-                    <ShoppingCart className='w-5 h-5' />
-                </Button>
+                <Link href="/basket" className='flex-1 relative flex justify-center items-center space-x-2 md:hidden'>
+                    <button className="p-2 text-foreground hover:text-accent transition-colors duration-200 relative">
+                        <ShoppingCart className="w-5 h-5" />
+                        <span className="absolute top-1 right-1 bg-accent text-accent-foreground text-xs rounded-full w-4 h-4 flex items-center justify-center font-medium">
+                            {itemCount}
+                        </span>
+                    </button>
+                </Link>
                 <button
                     className="md:hidden p-2 text-gray-600"
                     onClick={() => setIsOpen(!isOpen)}
