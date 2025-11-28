@@ -27,7 +27,7 @@ function Header() {
                 <nav className='hidden md:flex gap-8 font-medium text-sm uppercase tracking-wide justify-self-center text-gray-600'>
                     <Link href="/shop" className="hover:text-accent transition-colors">Shop</Link>
                     <Link href="#categories" className="hover:text-accent transition-colors">Categories</Link>
-                    <Link href="#featured" className="hover:text-accent transition-colors">Best Sellers</Link>
+                    <Link href="/orders" className="hover:text-accent transition-colors">Orders</Link>
                 </nav>
 
 
@@ -109,8 +109,8 @@ function Header() {
                         <Link href="#categories" onClick={() => setIsOpen(false)} className="text-gray-600 hover:text-black transition-colors">
                             Categories
                         </Link>
-                        <Link href="#featured" onClick={() => setIsOpen(false)} className="text-gray-600 hover:text-black transition-colors">
-                            Best Sellers
+                        <Link href="/orders" onClick={() => setIsOpen(false)} className="text-gray-600 hover:text-black transition-colors">
+                            Orders
                         </Link>
                     </nav>
                     
