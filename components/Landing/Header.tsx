@@ -28,7 +28,7 @@ function Header() {
                     <Link href="/shop" className="hover:text-accent transition-colors">Shop</Link>
                     <Link href="/#categories" className="hover:text-accent transition-colors">Categories</Link>
                     <Link href="/#featured" className="hover:text-accent transition-colors">Featured</Link>
-                    <Link href="/orders" className="hover:text-accent transition-colors">Orders</Link>
+                    {user && (<Link href="/orders" className="hover:text-accent transition-colors">Orders</Link>)}
                 </nav>
 
 
@@ -113,9 +113,12 @@ function Header() {
                         <Link href="/#featured" onClick={() => setIsOpen(false)} className="text-gray-600 hover:text-black transition-colors">
                             Featured
                         </Link>
-                        <Link href="/orders" onClick={() => setIsOpen(false)} className="text-gray-600 hover:text-black transition-colors">
-                            Orders
-                        </Link>
+                        {user && (
+                            <Link href="/orders" onClick={() => setIsOpen(false)} className="text-gray-600 hover:text-black transition-colors">
+                                Orders
+                            </Link>
+                        )}
+                        
                     </nav>
                     
                     <hr className="my-8 border-gray-100" />
@@ -132,7 +135,7 @@ function Header() {
                                 </div>
                             ) : (
                                 <SignInButton mode="modal">
-                                    <button className='w-full bg-black text-white py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-opacity'>
+                                    <button className='bg-accent text-white text-xl py-4 w-full px-5 rounded-full font-semibold hover:bg-accent/80 transition-all cursor-pointer'>
                                         Sign In
                                     </button>
                                 </SignInButton>
