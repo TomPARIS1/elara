@@ -8,7 +8,7 @@ const CATEGORIES = [
     { key: 'men-s-clothing', label: "Men's Clothing" },
     { key: 'women-s-clothing', label: "Women's Clothing" },
     { key: 'electronics', label: "Electronics" },
-    { key: 'jewelery', label: "Jewelery" },
+    { key: 'jewelry', label: "Jewelry" },
 ];
 
 export default function FilterSidebar() {

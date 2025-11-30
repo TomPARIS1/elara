@@ -104,12 +104,13 @@ const StatusMap = {
                                               >
                                                   <div className="col-span-2 relative w-12 h-12 bg-muted rounded-md overflow-hidden shrink-0">
                                                       {item.product?.image && (
-                                                          <Image  
-                                                              src={imageUrl(item.product.image).url()}
-                                                              alt={item.product.name ?? "Product Name"}
-                                                              fill
-                                                              className="object-contain"
-                                                          />
+                                                          <Image  
+                                                          src={imageUrl(item.product.image).url()}
+                                                          alt={item.product.name ?? "Product Name"}
+                                                          fill
+                                                          sizes="48px"
+                                                          className="object-contain"
+                                                        />
                                                       )}
                                                   </div>
                                                   

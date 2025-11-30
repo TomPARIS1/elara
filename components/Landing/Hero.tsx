@@ -1,5 +1,4 @@
-import React from 'react'
-import { Button } from '../ui/button'
+import Link from 'next/link'
 
 function Hero() {
   return (
@@ -15,9 +14,11 @@ function Hero() {
               Discover timeless pieces selected for quality, style, and enduring value. Each item thoughtfully chosen
               for modern living.
             </p>
-            <button className="w-fit cursor-pointer bg-accent text-accent-foreground px-8 py-3 font-medium text-sm tracking-wide hover:shadow-md transition-shadow duration-300">
-              Explore Collections
-            </button>
+            <Link href={"/shop"}>
+              <button className="w-fit cursor-pointer bg-accent text-accent-foreground px-8 py-3 font-medium text-sm tracking-wide hover:shadow-md transition-shadow duration-300">
+                Explore Collections
+              </button>
+            </Link>
           </div>
 
           <div className="relative h-64 md:h-96 bg-muted overflow-hidden">

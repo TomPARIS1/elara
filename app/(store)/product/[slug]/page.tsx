@@ -50,6 +50,7 @@ async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
                 src={imageUrl(product.image).url()}
                 alt={product.name ?? "Product Image"}
                 fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-contain hover:scale-105 transition-transform duration-500 p-8"
                 priority
               />

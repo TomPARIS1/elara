@@ -95,7 +95,7 @@ function BasketPage() {
                   className="flex flex-col md:flex-row gap-6 items-start md:items-center py-8 border-b border-border group"
                 >
                   <div 
-                    className="relative w-24 h-24 md:w-32 md:h-32 bg-gray-100 border border-border overflow-hidden cursor-pointer shrink-0"
+                    className="relative md:w-32 md:h-32 bg-gray-100 border border-border overflow-hidden cursor-pointer shrink-0"
                     onClick={() => router.push(`/product/${item.product.slug?.current}`)}
                   >
                     {item.product.image && (
@@ -103,6 +103,7 @@ function BasketPage() {
                         src={imageUrl(item.product.image).url()}
                         alt={item.product.name ?? "Product Image"}
                         fill
+                        sizes='96px'
                         className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
                       />
                     )}

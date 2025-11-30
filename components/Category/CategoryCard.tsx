@@ -12,11 +12,12 @@ function CategoryCard({ category }: {category: Category }) {
       <div className="relative h-48 overflow-hidden bg-muted">
         {category.image && (
           <Image
-            src={imageUrl(category.image).url()}
-            alt={category.title ?? "Category Image"}
-            fill
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
+          src={imageUrl(category.image).url()}
+          alt={category.title ?? "Category Image"}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        />
         )}
       </div>
       <div className="p-4">

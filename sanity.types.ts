@@ -359,7 +359,7 @@ export type ALL_CATEGORIES_QUERYResult = Array<{
 
 // Source: ./sanity/lib/products/getAllProducts.ts
 // Variable: ALL_PRODUCTS_QUERY
-// Query: *[                _type == "product"            ] | order(name asc)
+// Query: *[_type == "product"] | order(name asc)
 export type ALL_PRODUCTS_QUERYResult = Array<{
   _id: string;
   _type: "product";
@@ -548,7 +548,7 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "\n            *[_type == \"order\" && clerkUserId == $userId] | order(orderDate desc) {\n                ...,\n                products[]{\n                    ...,\n                    product->\n                }\n            }\n        ": MY_ORDERS_QUERYResult;
     "\n            *[\n                _type == \"category\"\n            ] | order(name asc)\n        ": ALL_CATEGORIES_QUERYResult;
-    "\n            *[\n                _type == \"product\"\n            ] | order(name asc)\n        ": ALL_PRODUCTS_QUERYResult;
+    "\n        *[_type == \"product\"] | order(name asc)\n    ": ALL_PRODUCTS_QUERYResult;
     "\n        *[\n            _type == \"product\" && slug.current == $slug\n        ] | order(name asc)[0]\n        ": PRODUCT_BY_ID_QUERYResult;
     "\n        *[\n            _type == \"product\" \n            && $categoryId in categories[]->_id  \n            && _id != $excludeId                  \n        ] | order(name asc)[0...3]\n      ": PRODUCTS_BY_CATEGORY_QUERYResult;
     "\n        *[\n          _type == \"product\"\n        ] | order(rating.rate desc) [0...8]\n      ": TOP_RATED_PRODUCTS_QUERYResult;
