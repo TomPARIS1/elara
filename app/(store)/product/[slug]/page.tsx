@@ -94,7 +94,7 @@ async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
 
             <div className="mb-8">
                 <div className="w-full">
-                    <AddToBasketButton product={product} />
+                    <AddToBasketButton product={product} outOfStock={outOfStock} />
                 </div>
             </div>
 
